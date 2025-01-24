@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe5d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 1s;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 20px;
+            color: #555;
+            transition: all 0.5s;
+        }
+
+        .fact-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s ease-in-out, background-color 0.3s;
+        }
+
+        .fact-button:hover, .fact-button:focus {
+            background-color: #cc5447;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animated-entry {
+            animation: fadeIn 2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container animated-entry">
+        <h1>Discover Mars</h1>
+        <div id="fact-display" class="fact-display">
+            Click the button to learn more about Mars!
+        </div>
+        <button id="fact-button" class="fact-button">Show Random Fact</button>
+    </div>
+    <script>
+        const facts = [
+            {
+                fact: "Red Planet",
+                detail: "Mars is known as the Red Planet because its surface is covered in red iron oxide dust."
+            },
+            {
+                fact: "Highest Mountain",
+                detail: "Olympus Mons on Mars is the tallest planetary mountain in our solar system, standing at 22 kilometers high."
+            },
+            {
+                fact: "Thin Atmosphere",
+                detail: "Mars has a very thin atmosphere made mostly of carbon dioxide, with no breathable oxygen."
+            },
+            {
+                fact: "Water Ice",
+                detail: "Mars has polar ice caps that contain large amounts of water ice, which could potentially support human colonization."
+            },
+            {
+                fact: "Seasons",
+                detail: "Mars experiences seasons just like Earth, but they last twice as long due to its longer orbital period around the sun."
+            },
+            {
+                fact: "Volcanic Activity",
+                detail: "While currently inactive, Mars hosts some of the largest volcanoes in the solar system, which were active millions of years ago."
+            },
+            {
+                fact: "Potential for Life",
+                detail: "Scientists study Mars extensively for signs of past microbial life and consider it a prime candidate for future human habitation."
+            },
+            {
+                fact: "Robotic Exploration",
+                detail: "Mars has been explored more than any other planet in our solar system, aside from Earth, thanks to numerous robotic missions."
+            },
+            {
+                fact: "Moons",
+                detail: "Mars has two small moons, Phobos and Deimos, which are thought to be captured asteroids."
+            },
+            {
+                fact: "Blue Sunsets",
+                detail: "Sunsets on Mars appear blue to human observers watching from Mars due to the way the atmosphere scatters light."
+            }
+        ];
+
+        const factButton = document.getElementById('fact-button');
+        const factDisplay = document.getElementById('fact-display');
+        const body = document.body;
+
+        factButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const randomFact = facts[randomIndex];
+            factDisplay.innerHTML = `<strong>${randomFact.fact}:</strong> ${randomFact.detail}`;
+            body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 85%)`; // Change background color dynamically
+        });
+    </script>
+</body>
+</html>
